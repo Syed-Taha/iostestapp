@@ -16,7 +16,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    la = [[UILabel alloc]initWithFrame:CGRectMake(320, 100, 200, 60)];
+    
+    la.text = @"This is my music line";
+    
+    [self.view addSubview:la];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.0
+                                     target:self
+                                   selector:@selector(LabelAnimation)
+                                   userInfo:nil
+                                    repeats:YES];
     // Do any additional setup after loading the view, typically from a nib.
+}
+-(void)LabelAnimation
+{
+    [UIView animateWithDuration:3.0f delay:0.0f options:UIViewAnimationOptionTransitionNone animations:^{
+        la.frame = CGRectMake(-320, 100, 200, 60);
+    } completion:^(BOOL finished)
+     {
+         la.frame = CGRectMake(320, 100, 200, 60);
+     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
